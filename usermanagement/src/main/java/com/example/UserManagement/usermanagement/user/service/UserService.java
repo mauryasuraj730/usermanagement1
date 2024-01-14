@@ -13,8 +13,8 @@ import com.example.UserManagement.usermanagement.user.repository.UserAdvisorRepo
 import com.example.UserManagement.usermanagement.user.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -32,7 +32,7 @@ public class UserService {
     @Autowired
     UserAdvisorRepository userAdvisorRepository;
 
-    public Map<String, String> signIn(SignInPayload payload) {
+    public ResponseEntity<Map<String, String>> signIn(SignInPayload payload) {
         Map<String, String> map = new HashMap<>();
         UserEntity user = userRepository.findByUserEmail(payload.getEmail().toLowerCase());
         if (user.getUserPassword().equals(payload.getPassword())) {
@@ -40,14 +40,16 @@ public class UserService {
                 String accessToken1 = new JwtTokenUtil().generateToken(payload.getEmail().toLowerCase());
                 map.put("jwtToken", accessToken1);
                 map.put("userId", String.valueOf(user.getUserId()));
+                return new ResponseEntity<Map<String, String>>(map, HttpStatus.OK);
             } else {
-             map.put("EmailId","Please Enter correct Email Id ");
+                map.put("EmailId", "Please Enter correct Email Id ");
+                return new ResponseEntity<Map<String, String>>(map, HttpStatus.UNAUTHORIZED);
             }
         }
-        return map;
+
     }
 
-    public Map<String, String> createUser(SignUpPayload payload) {
+    public ResponseEntity<Map<String, String>> createUser(SignUpPayload payload) {
         Map<String, String> map = new HashMap<>();
         UserEntity user = userRepository.findByUserEmail(payload.getEmail().toLowerCase());
         if (user == null) {
@@ -60,11 +62,12 @@ public class UserService {
             String accessToken1 = new JwtTokenUtil().generateToken(payload.getEmail().toLowerCase());
             map.put("jwtToken", accessToken1);
             map.put("userId", String.valueOf(user.getUserId()));
+            return new ResponseEntity<>(map, HttpStatus.OK);
         } else {
             log.info("user already exists");
-            throw new RuntimeException("User Id already Exists");
-         }
-        return map;
+            map.put(payload.getEmail(), "Email id already Exists");
+            return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
+        }
     }
 
     public List<AdvisorEntity> getAllAdvisor() {

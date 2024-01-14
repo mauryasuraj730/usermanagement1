@@ -24,13 +24,13 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/register")
-    public Map<String, String> signUpUser(@Valid @RequestBody SignUpPayload signUpPayload) {
+    public ResponseEntity<Map<String, String>> signUpUser(@Valid @RequestBody SignUpPayload signUpPayload) {
         log.info("user payload " + signUpPayload);
         return userService.createUser(signUpPayload);
     }
 
     @PostMapping("/login")
-    public Map<String, String> signInUser(@Valid @RequestBody SignInPayload signInPayload) {
+    public ResponseEntity<Map<String, String>> signInUser(@Valid @RequestBody SignInPayload signInPayload) {
         log.info("user payload " + signInPayload);
         return userService.signIn(signInPayload);
     }
