@@ -41,7 +41,6 @@ public class UserService {
                 map.put("jwtToken", accessToken1);
                 map.put("userId", String.valueOf(user.getUserId()));
             } else {
-
              map.put("EmailId","Please Enter correct Email Id ");
             }
         }
