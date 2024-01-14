@@ -45,9 +45,14 @@ public class UserService {
                 map.put("EmailId", "Please Enter correct Email Id ");
                 return new ResponseEntity<Map<String, String>>(map, HttpStatus.UNAUTHORIZED);
             }
-        }
+        }else{
+            map.put("EmailId", "Please Enter Correct Password ");
+            return new ResponseEntity<Map<String, String>>(map, HttpStatus.UNAUTHORIZED);
 
+        }
     }
+
+
 
     public ResponseEntity<Map<String, String>> createUser(SignUpPayload payload) {
         Map<String, String> map = new HashMap<>();
