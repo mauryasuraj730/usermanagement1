@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "03a090f8-0807-487c-90fc-ee7bc8e86655",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32323346"
+	},
+	"item": [
+		{
+			"name": "UserManagement",
+			"item": [
+				{
+					"name": "http://localhost:8080/user/1/advisor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/1/advisor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"1",
+								"advisor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/user/1/advisor/booking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/1/advisor/booking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"1",
+								"advisor",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/user/2/advisor/1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXVyeWFzdXJhajcxQGdtYWlsLmNvbSIsImV4cCI6MTcwNTIyNDU2OSwiaWF0IjoxNzA1MjA2NTY5fQ.E9gY8eS3T2LXDPM67RaIjLDvd2iojzbhOHKOE5hCTa8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"bookingTime\":\"2024-01-15 20:52:52\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/2/advisor/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"2",
+								"advisor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/user/login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXVyeWFzdXJhajc3QGdtYWlsLmNvbSIsImV4cCI6MTcwNTIyMzcyMywiaWF0IjoxNzA1MjA1NzIzfQ.tJTKssXme85yUpLvK51en3LOQKugaOqfDTv8NaGoZDo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"email\":\"mauryasuraj71@gmail.com\",\r\n\"password\":\"password\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/admin/advisor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"advisorName\":\"suraj3\",\r\n\"advisorPhotoUrl\":\"http://www.google.com\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/admin/advisor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"advisor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/user/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\":\"suraj maurya\",\r\n\"email\":\"mauryasuraj88@gmail.com\",\r\n\"password\":\"password\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LeadManagement",
+			"item": [
+				{
+					"name": "http://localhost:8080/lead/save",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"leadId\": \"967890\",\r\n\"firstName\":\"Suraj\",\r\n\"middleName\":\"Kumar\",\r\n\"lastName\":\"Maurya\",\r\n\"mobileNumber\":\"9875663210\",\r\n\"gender\":\"Male\",\r\n\"dob\":\"09/10/1998\",\r\n\"email\":\"mauryasuraj@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lead/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lead",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/lead/get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lead/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lead",
+								"get"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
